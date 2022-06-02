@@ -41,5 +41,9 @@ podman run -d --rm --name ztp-mirror -p 8080:8080 -v ./container_root/etc/ztp-mi
 You can easily deploy to OpenShift with the pre-provided YAML manifests.  Take note of the commented-out portions of the `deploy/03-deployment.yaml` file for suggestions on how to mount custom Root CAs and Proxy Configuration.
 
 ```bash
+## Create a project
+oc new-project ztp-mirror
+
+## Deploy the ConfigMaps, PVC, Deployment, Service, and Route
 oc apply -f deploy/
 ```
