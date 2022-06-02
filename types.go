@@ -16,8 +16,6 @@ func (e *errorString) Error() string {
 // CLIOpts defines the CLI Arguements
 type CLIOpts struct {
 	Config string
-	Source string
-	Dir    string
 }
 
 // Config struct for webapp config at the top level
@@ -42,8 +40,8 @@ type Server struct {
 	SkipTLSVerify  bool   `yaml:"skip_tls_verify"`
 
 	// Port is the local machine TCP Port to bind the HTTP Server to
-	Port    string `yaml:"port"`
-	Timeout struct {
+	Port     string `yaml:"port"`
+	Timeouts struct {
 		// Server is the general server timeout to use
 		// for graceful shutdowns
 		Server time.Duration `yaml:"server"`

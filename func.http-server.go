@@ -48,7 +48,7 @@ func (config Config) RunHTTPServer() {
 	// of an OS interrupt (defers the cancel just in case)
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		config.Application.Server.Timeout.Server,
+		config.Application.Server.Timeouts.Server,
 	)
 	defer cancel()
 
@@ -63,9 +63,9 @@ func (config Config) RunHTTPServer() {
 		Addr:    config.Application.Server.Host + ":" + config.Application.Server.Port,
 		Handler: handler,
 		//Handler:      NewRouter(config.Application.Server.BasePath, config.Application.Server.FileSystemPath),
-		ReadTimeout:  config.Application.Server.Timeout.Read * time.Second,
-		WriteTimeout: config.Application.Server.Timeout.Write * time.Second,
-		IdleTimeout:  config.Application.Server.Timeout.Idle * time.Second,
+		ReadTimeout:  config.Application.Server.Timeouts.Read * time.Second,
+		WriteTimeout: config.Application.Server.Timeouts.Write * time.Second,
+		IdleTimeout:  config.Application.Server.Timeouts.Idle * time.Second,
 	}
 
 	// Only listen on IPV4

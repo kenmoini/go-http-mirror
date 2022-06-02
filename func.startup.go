@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
 
 	"gopkg.in/yaml.v2"
@@ -37,6 +38,12 @@ func NewConfig(configPath CLIOpts) (*Config, error) {
 
 	readConfig = config
 
+	// Pass in some basic debug information
+	logStdOut("[Server Mode]: Configuration file: " + configPath.Config)
+	logStdOut("[Server Mode]: Server Port: " + config.Application.Server.Port)
+	logStdOut("[Server Mode]: Skip TLS Verification: " + fmt.Sprint(config.Application.Server.SkipTLSVerify))
+	logStdOut("[Server Mode]: Timeouts: " + fmt.Sprint(config.Application.Server.Timeouts))
+
 	return config, nil
 }
 
@@ -45,18 +52,6 @@ func NewConfig(configPath CLIOpts) (*Config, error) {
 func ParseFlags() (CLIOpts, error) {
 	// String that contains the configured configuration path
 	var configPath string
-	// String that contains the input yaml
-	var source string
-	// String that contains the destination directory
-	var dir string
-
-	// Set up a CLI flag called "-source" to allow users
-	// to specify a YAML Zone defintion input file
-	flag.StringVar(&source, "source", "", "Source YAML Zones Definition, eg '-source=./zones.yml'")
-
-	// Set up a CLI flag called "-dir" to allow users
-	// to specify the target directory for generated zone and configuration files
-	flag.StringVar(&dir, "dir", "", "Target directory for generated files, eg '-dir=./generated'")
 
 	// Set up a CLI flag called "-config" to allow users
 	// to supply the configuration file
@@ -75,9 +70,7 @@ func ParseFlags() (CLIOpts, error) {
 	}
 
 	SetCLIOpts := CLIOpts{
-		Config: configPath,
-		Dir:    dir,
-		Source: source}
+		Config: configPath}
 
 	// Return the configuration path
 	return SetCLIOpts, nil
