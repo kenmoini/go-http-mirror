@@ -1,0 +1,26 @@
+app:
+
+  assets:
+    - source: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.9/latest/rhcos-live.x86_64.iso
+      destination: "/tmp/server/pub/openshift-v4/x86_64/dependencies/rhcos/4.9/latest/rhcos-live.x86_64.iso"
+
+    - source: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.9/latest/rhcos-live-rootfs.x86_64.img
+      destination: "/tmp/server/pub/openshift-v4/x86_64/dependencies/rhcos/4.9/latest/rhcos-live-rootfs.x86_64.img"
+
+    - source: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.10/latest/rhcos-live.x86_64.iso
+      destination: "/tmp/server/pub/openshift-v4/x86_64/dependencies/rhcos/4.10/latest/rhcos-live.x86_64.iso"
+
+    - source: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/4.10/latest/rhcos-live-rootfs.x86_64.img
+      destination: "/tmp/server/pub/openshift-v4/x86_64/dependencies/rhcos/4.10/latest/rhcos-live-rootfs.x86_64.img"
+      #overwrite: true
+
+  server:
+    host: 0.0.0.0
+    base_path: "/pub/"
+    fs_path: "/tmp/server/pub"
+    port: 8080
+    timeouts:
+      server: 60
+      read: 30
+      write: 20
+      idle: 10
