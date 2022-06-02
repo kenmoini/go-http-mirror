@@ -4,7 +4,7 @@ metadata:
   name: ztp-mirror
   namespace: ztp-mirror
 spec:
-  host: ztp-mirror-ztp-mirror.apps.core-ocp.lab.kemo.network
+  #host: ztp-mirror-ztp-mirror.apps.core-ocp.lab.kemo.network
   path: /
   to:
     kind: Service

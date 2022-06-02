@@ -22,6 +22,7 @@ data:
         host: 0.0.0.0
         base_path: "/pub/"
         fs_path: "/tmp/server/pub"
+        skip_tls_verify: true
         port: 8080
         timeouts:
           server: 60

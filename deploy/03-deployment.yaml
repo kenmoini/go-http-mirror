@@ -8,6 +8,8 @@ spec:
     matchLabels:
       app: mirror-server
   replicas: 1
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -20,6 +22,9 @@ spec:
         - name: mirror-config
           configMap:
             name: mirror-config
+            items:
+              - key: config.yml
+                path: config.yml
         #- name: trusted-ca
         #  configMap:
         #    name: trusted-ca

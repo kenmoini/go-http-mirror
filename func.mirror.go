@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"time"
+)
+
 // mirrorAsset mirrors them from the source URL to the local destination path
 func mirrorAsset(source string, destination string, overwrite bool) error {
 	// Check to make sure the destination directory exists
@@ -35,11 +40,14 @@ func mirrorAsset(source string, destination string, overwrite bool) error {
 				logStdOut("OVERWRITING FILE: " + destination)
 			}
 			// Download the file
+			start := time.Now()
 			err := DownloadFile(destination, source)
 			// Check for errors
 			if err != nil {
-				logStdErr("Error downloading file: " + source)
+				logStdErr("Error downloading file: " + source + "\n" + err.Error())
 				return err
+			} else {
+				logStdOut("Downloaded to " + destination + " in " + fmt.Sprint(time.Since(start).Seconds()) + " seconds")
 			}
 		} else {
 			// File exists

@@ -3,6 +3,7 @@ package main
 import (
 	"archive/tar"
 	"compress/gzip"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -167,6 +168,9 @@ func CopyFile(src, dst string, BUFFERSIZE int64) error {
 // write as it downloads and not load the whole file into memory.
 func DownloadFile(filepath string, url string) error {
 	log.Printf("Downloading %s to %s\n", url, filepath)
+
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: readConfig.Application.Server.SkipTLSVerify}
+
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {

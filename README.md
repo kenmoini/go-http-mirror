@@ -33,6 +33,7 @@ podman build -t ztp-mirror .
 podman pull quay.io/kenmoini/go-http-mirror:latest
 
 ## Run the container with the example configuration
+podman run -d --rm --name ztp-mirror -p 8080:8080 ztp-mirror
 podman run -d --rm --name ztp-mirror -p 8080:8080 -v ./container_root/etc/ztp-mirror:/etc/ztp-mirror ztp-mirror
 ```
 

@@ -39,6 +39,7 @@ type Server struct {
 
 	BasePath       string `yaml:"base_path"`
 	FileSystemPath string `yaml:"fs_path"`
+	SkipTLSVerify  bool   `yaml:"skip_tls_verify"`
 
 	// Port is the local machine TCP Port to bind the HTTP Server to
 	Port    string `yaml:"port"`
@@ -80,7 +81,7 @@ type HTTPReqInfo struct {
 	ipaddr  string
 	// response code, like 200, 404
 	code int
-	// how long did it take to
+	// how long did it take to transfer the request
 	duration  time.Duration
 	userAgent string
 }
