@@ -77,7 +77,7 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 				duration:  time.Since(start),
 			}
 
-			logStdOut("IP[" + ri.ipaddr + "] UA[" + ri.userAgent + "] " + ri.method + ":" + fmt.Sprint(ri.code) + " " + ri.uri + " - took " + fmt.Sprint(ri.duration.Microseconds()) + "us")
+			logStdOut("IP[" + ri.ipaddr + "] UA[" + ri.userAgent + "] " + ri.method + ":" + fmt.Sprint(ri.code) + " " + ri.uri + " - took " + fmt.Sprint(ri.duration.Seconds()) + "s")
 			// It's important that we don't use the ResponseWriter after we've called the
 			// next handler: we may cause conflicts when trying to write the response
 		},
