@@ -43,7 +43,7 @@ func NewConfig(configPath CLIOpts) (*Config, error) {
 	logStdOut("[Server Mode]: Server Port: " + config.Application.Server.Port)
 	logStdOut("[Server Mode]: Skip TLS Verification: " + fmt.Sprint(config.Application.Server.SkipTLSVerify))
 	logStdOut("[Server Mode]: Timeouts: " + fmt.Sprint(config.Application.Server.Timeouts))
-	logStdOut("[Server Mode]: Listening at: " + config.Application.Server.Host + ":" + config.Application.Server.Port + config.Application.Server.BasePath)
+	logStdOut("[Server Mode]: Listening at: http://" + config.Application.Server.Host + ":" + config.Application.Server.Port + config.Application.Server.BasePath)
 	logStdOut("[Server Mode]: Serving path: " + config.Application.Server.FileSystemPath)
 
 	return config, nil
