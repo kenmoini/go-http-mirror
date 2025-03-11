@@ -34,7 +34,7 @@ podman pull quay.io/kenmoini/go-http-mirror:latest
 
 ## Run the container with the example configuration
 podman run -d --rm --name http-mirror -p 8080:8080 http-mirror
-podman run -d --rm --name http-mirror -p 8080:8080 -v ./container_root/etc/ztp-mirror:/etc/http-mirror http-mirror
+podman run -d --rm --name http-mirror -p 8080:8080 -v ./container_root/etc/http-mirror:/etc/http-mirror http-mirror
 ```
 
 ## Deploying to OpenShift
