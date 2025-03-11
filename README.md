@@ -4,7 +4,7 @@ This application will take a list of URLs, download them to a specific path, opt
 
 ## Example Configuration
 
-You can find some example configuration in the `container_root/etc/ztp-mirror/config.yml` file.
+You can find some example configuration in the `container_root/etc/http-mirror/config.yml` file.
 
 The default configuration has files from `/tmp/server/pub` served to `http://localhost:8080/pub/`
 
@@ -17,24 +17,24 @@ The default configuration has files from `/tmp/server/pub` served to `http://loc
 go mod tidy
 
 ## Build the binary
-go build -o ztp-mirror
+go build -o http-mirror
 
 ## Run the binary with the example configuration
-./ztp-mirror -config=./container_root/etc/ztp-mirror/config.yml
+./http-mirror -config=./container_root/etc/http-mirror/config.yml
 ```
 
 ### Container
 
 ```bash
 ## Build the container
-podman build -t ztp-mirror .
+podman build -t http-mirror .
 
 ## or just pull it from the pre-built image
 podman pull quay.io/kenmoini/go-http-mirror:latest
 
 ## Run the container with the example configuration
-podman run -d --rm --name ztp-mirror -p 8080:8080 ztp-mirror
-podman run -d --rm --name ztp-mirror -p 8080:8080 -v ./container_root/etc/ztp-mirror:/etc/ztp-mirror ztp-mirror
+podman run -d --rm --name http-mirror -p 8080:8080 http-mirror
+podman run -d --rm --name http-mirror -p 8080:8080 -v ./container_root/etc/ztp-mirror:/etc/http-mirror http-mirror
 ```
 
 ## Deploying to OpenShift
@@ -43,8 +43,8 @@ You can easily deploy to OpenShift with the pre-provided YAML manifests.  Take n
 
 ```bash
 ## Create a project
-oc new-project ztp-mirror
+oc new-project http-mirror
 
 ## Deploy the ConfigMaps, PVC, Deployment, Service, and Route
-oc apply -f deploy/
+oc apply -R -f deploy/
 ```

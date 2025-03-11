@@ -1,8 +1,9 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ztp-mirror
-  namespace: ztp-mirror
+  name: http-mirror
+  namespace: http-mirror
 spec:
   accessModes:
     - ReadWriteOnce

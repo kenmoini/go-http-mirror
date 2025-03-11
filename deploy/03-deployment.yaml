@@ -1,8 +1,8 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mirror-server
-  namespace: ztp-mirror
 spec:
   selector:
     matchLabels:
@@ -16,9 +16,9 @@ spec:
         app: mirror-server
     spec:
       volumes:
-        - name: ztp-mirror
+        - name: http-mirror
           persistentVolumeClaim:
-            claimName: ztp-mirror
+            claimName: http-mirror
         - name: mirror-config
           configMap:
             name: mirror-config
@@ -59,8 +59,8 @@ spec:
               memory: "500Mi"
           volumeMounts:
             - name: mirror-config
-              mountPath: /etc/ztp-mirror
-            - name: ztp-mirror
+              mountPath: /etc/http-mirror
+            - name: http-mirror
               mountPath: /tmp/server/pub
             #- mountPath: /etc/pki/ca-trust/extracted/pem
             #  name: trusted-ca

@@ -1,8 +1,8 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ztp-mirror
-  namespace: ztp-mirror
+  name: http-mirror
 spec:
   selector:
     app: mirror-server

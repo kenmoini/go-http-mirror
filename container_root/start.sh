@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/local/bin/ztp-mirror -config /etc/ztp-mirror/config.yml
+/usr/local/bin/http-mirror -config /etc/http-mirror/config.yml
