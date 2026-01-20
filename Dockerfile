@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi8/go-toolset:latest AS build
 
 WORKDIR /opt/app-root/src
 COPY . .
-RUN CGO_ENABLED=0 go build -o http-mirror -buildvcs=false
+RUN go build -o http-mirror -buildvcs=false
 
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest AS bin
 #FROM scratch AS bin
