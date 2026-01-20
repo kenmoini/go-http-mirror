@@ -4,7 +4,7 @@ WORKDIR /opt/app-root/src
 COPY . .
 RUN go build -o http-mirror
 
-FROM registry.access.redhat.com/ubi9/ubi-micro:latest AS bin
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest AS bin
 #FROM scratch AS bin
 
 USER 0
